@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="ulList">
+        <li class="list">Элемент 1</li>
+        <li class="list">Элемент 2</li>
+        <li class="list">Элемент 3</li>
+    </ul>
+    <button class="btn">Добавить элемент</button>
+
+    <script>
+        // Создать в html список состоящий из 3 - х произвольных элементов li
+        // Нужно создать кнопку которая будет добавлять элементы списка с текстом “новый элемент списка”
+        // Создать кнопку, которая будет удалять первый элемент из созданного списка
+        // Создать кнопку, при клике на которую ей добавляется - убирается класс “click”
+
+        const ulEl = document.querySelector('.ulList');
+        const btnEl = document.querySelector('.btn');
+        let count = 0;
+        btnEl.addEventListener('click', function (e) {
+            ulEl.insertAdjacentHTML('beforeend', `<li class="list1">новый элемент списка ${++count}</li>`);
+        });
+
+        btnEl.insertAdjacentHTML('afterend', '<br>');
+        const brEl = document.querySelector('br'); //создание <br> для разделения кнопок
+        brEl.insertAdjacentHTML('afterend', '<button class="btn2">Удалить новый элемент</button>');
+        const btnEl2 = document.querySelector('.btn2');
+
+        btnEl2.addEventListener('click', function (e) {
+            if (document.querySelector('.list1')) {
+                const list1El = document.querySelector('.list1');
+                list1El.remove();
+            }
+        });
+
+        btnEl2.insertAdjacentHTML('afterend', '<div class = "div"></div>');
+        const divEl = document.querySelector('.div');
+        const btnEl3 = document.createElement('button');
+        btnEl3.setAttribute('class', 'btn3');
+        btnEl3.textContent = 'Удалить/добавить класс';
+        divEl.appendChild(btnEl3);
+
+        btnEl3.addEventListener('click', function (e) {
+            btnEl3.classList.toggle("btn-secondary");
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
